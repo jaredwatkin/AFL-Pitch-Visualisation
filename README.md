@@ -170,3 +170,7 @@ geom_path(data=fiftyarcright,aes(x=x,y=y),colour=line_colour) +
 geom_rect(aes(xmin=xmin,xmax=LeftGoalSquareLength[2],ymin=LeftGoalSquareWidth[2],ymax=LeftGoalSquareWidth[1]),fill=grass_colour,colour=line_colour) +
 geom_rect(aes(xmin=RightGoalSquareLength[2],xmax=xmax,ymin=RightGoalSquareWidth[2],ymax=RightGoalSquareWidth[1]),fill=grass_colour,colour=line_colour)
 ```
+
+# Putting it into a Function
+
+In time I will have the kinks ironed out and turn the plot into a function that can be modified for different field dimensions by changing (xmax, ymax) as well as our plot colours.
