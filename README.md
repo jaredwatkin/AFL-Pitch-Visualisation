@@ -12,7 +12,7 @@ line_colour <- "#FFFFFC"
 background_colour <- "#60BC48"
 ```
 Next up is creating a theme to help control how the field will be displayed in ggplot. Many of the theme features that we don't require can be turned off using element_blank().
-```
+```R
 theme_blankPitch = function(size=12) { 
   theme(
     #axis.line=element_blank(), 
