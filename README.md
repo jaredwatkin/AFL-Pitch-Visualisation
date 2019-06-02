@@ -106,6 +106,8 @@ We have all the main landmarks we will need to begin creating our AFL field. Usi
 ## Initiate ggplot and set boundaries for our canvas that will allow some excess space around the plot. I will set this as the variable "field" to save typing
 field <- ggplot() + xlim(c(-10,xmax+10)) + ylim(c(-10,ymax+10))
 ```
+[[https://github.com/jaredwatkin/AFL-Pitch-Visualisation/blob/master/Plot1.png]]
+
 Now let's add the preset theme to the background
 ```
 field + 
