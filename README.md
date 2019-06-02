@@ -101,7 +101,7 @@ fiftyarcright <- circleFun(c(xmax,(ymax/2)),fiftyarc_d,npoints=100)
 ```
 # Plotting everything
 
-We have all the main landmarks we will need to begin creating our AFL field. Using ggplot2, we will add each element as a new layer on top off a background plot
+We have all the main landmarks we will need to begin creating our AFL field. Using ggplot2, we will add each element as a new layer on top of a background plot
 ```
 ## Initiate ggplot and set boundaries for our canvas that will allow some excess space around the plot. I will set this as the variable "field" to save typing
 field <- ggplot() + xlim(c(-10,xmax+10)) + ylim(c(-10,ymax+10))
