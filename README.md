@@ -3,10 +3,10 @@ This post is going to step through visualising an AFL pitch in R using ggplot2. 
 
 # Setting a Theme
 First up I want to set a colour theme for the plot. I am taking inspiration from [FC RStats'](https://github.com/FCrSTATS) [soccer pitch visualisation](https://github.com/FCrSTATS/Visualisations/blob/master/3.CreateAPitch.md) and using the [Adobe Colour Tool](https://color.adobe.com/create) to create a basic green background with white field markings. 
-```
+```R
 library(ggplot2)
 ```
-```
+```R
 grass_colour <- "#60BC48"
 line_colour <- "#FFFFFC"
 background_colour <- "#60BC48"
@@ -44,7 +44,7 @@ theme_blankPitch = function(size=12) {
 ```
 # Creating our field
 To create our field, I will need to define the field size to the nearest centimetre for precision. To begin I will use the rough dimensions of Brisbane's [GABBA stadium](https://en.wikipedia.org/wiki/The_Gabba).
-```
+```R
 xmin <- 0
 xmax <- 17000
 ymin <- 0
@@ -52,7 +52,7 @@ ymax <- 15000
 ```
 The next step is to define and calculate the landmarks and line markings we want to plot.
 
-```
+```R
 # Landmark dimensions
 goalpostwidth <- 640
 centresquareW <- 5000
@@ -73,7 +73,7 @@ RightGoalSquareLength <- c(xmax,xmax-goalsquareL)
 ```
 
 I will again borrow from FC R Stats' to create a circle function that will allow me to plot the centre circles and 50m arcs.
-```
+```R
 # Large centre circle diameter
 centrecirclemax_d <- 1000
 # Small centre circle diameter
@@ -102,14 +102,14 @@ fiftyarcright <- circleFun(c(xmax,(ymax/2)),fiftyarc_d,npoints=100)
 # Plotting everything
 
 We have all the main landmarks we will need to begin creating our AFL field. Using ggplot2, we will add each element as a new layer on top of a background plot
-```
+```R
 ## Initiate ggplot and set boundaries for our canvas that will allow some excess space around the plot. I will set this as the variable "field" to save typing
 field <- ggplot() + xlim(c(-10,xmax+10)) + ylim(c(-10,ymax+10))
 ```
 ![Blank plot](https://github.com/jaredwatkin/AFL-Pitch-Visualisation/blob/master/Plot1.png)
 
 Now let's add the preset theme to the background
-```
+```R
 field + 
 # add theme_blankPitch onto canvas
 theme_blankPitch()
@@ -119,7 +119,7 @@ theme_blankPitch()
 Now I can start adding the field landmarks.
 
 The boundary:
-```
+```R
 field + 
 # add theme_blankPitch onto canvas
 theme_blankPitch() +
@@ -129,7 +129,7 @@ geom_rect(aes(xmin=0, xmax=xmax, ymin=0, ymax=ymax),fill=grass_colour,colour=lin
 ![Field](https://github.com/jaredwatkin/AFL-Pitch-Visualisation/blob/master/Plot3.png)
 
 The centre square:
-```
+```R
 field + 
 # add theme_blankPitch onto canvas
 theme_blankPitch() +
@@ -140,7 +140,7 @@ geom_rect(aes(xmin=CentreSquareLength[2],xmax=CentreSquareLength[1],ymin=CentreS
 ![Field](https://github.com/jaredwatkin/AFL-Pitch-Visualisation/blob/master/Plot4.png)
 
 The centre circles:
-```
+```R
 field + 
 # add theme_blankPitch onto canvas
 theme_blankPitch() +
@@ -153,7 +153,7 @@ geom_path(data=centrecirclemin, aes(x=x,y=y),colour=line_colour)
 ![Field](https://github.com/jaredwatkin/AFL-Pitch-Visualisation/blob/master/Plot5.png)
 
 50m arcs:
-```
+```R
 field + 
 # add theme_blankPitch onto canvas
 theme_blankPitch() +
@@ -168,7 +168,7 @@ geom_path(data=fiftyarcright,aes(x=x,y=y),colour=line_colour)
 ![Field](https://github.com/jaredwatkin/AFL-Pitch-Visualisation/blob/master/Plot6.png)
 
 Goal squares:
-```
+```R
 field + 
 # add theme_blankPitch onto canvas
 theme_blankPitch() +
