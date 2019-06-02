@@ -1,5 +1,5 @@
 # AFL-Pitch-Visualisation
-Visualising an AFL pitch in R using ggplot2
+This post is going to step through visualising an AFL pitch in R using ggplot2. The idea behind this is to ideally use it as a starting point for different AFL-related data viz that can be plotted onto the field.
 
 # Setting a Theme
 First up I want to set a colour theme for the plot. I am taking inspiration from [FC RStats'](https://github.com/FCrSTATS) [soccer pitch visualisation](https://github.com/FCrSTATS/Visualisations/blob/master/3.CreateAPitch.md) and using the [Adobe Colour Tool](https://color.adobe.com/create) to create a basic green background with white field markings. 
