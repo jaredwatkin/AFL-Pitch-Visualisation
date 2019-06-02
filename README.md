@@ -114,6 +114,8 @@ field +
 # add theme_blankPitch onto canvas
 theme_blankPitch()
 ```
+![Blank + field](https://github.com/jaredwatkin/AFL-Pitch-Visualisation/blob/master/Plot2.png)
+
 Now I can start adding the field landmarks.
 
 The boundary:
@@ -124,6 +126,8 @@ theme_blankPitch() +
 ### This will be an oval in time, but I am still figuring out how to plot that in ggplot
 geom_rect(aes(xmin=0, xmax=xmax, ymin=0, ymax=ymax),fill=grass_colour,colour=line_colour)
 ```
+![Field](https://github.com/jaredwatkin/AFL-Pitch-Visualisation/blob/master/Plot3.png)
+
 The centre square:
 ```
 field + 
@@ -133,6 +137,8 @@ theme_blankPitch() +
 geom_rect(aes(xmin=0, xmax=xmax, ymin=0, ymax=ymax),fill=grass_colour,colour=line_colour) +
 geom_rect(aes(xmin=CentreSquareLength[2],xmax=CentreSquareLength[1],ymin=CentreSquareWidth[2],ymax=CentreSquareWidth[1]),fill=grass_colour,colour=line_colour)
 ```
+![Field](https://github.com/jaredwatkin/AFL-Pitch-Visualisation/blob/master/Plot4.png)
+
 The centre circles:
 ```
 field + 
@@ -144,6 +150,8 @@ geom_rect(aes(xmin=CentreSquareLength[2],xmax=CentreSquareLength[1],ymin=CentreS
 geom_path(data=centrecirclemax, aes(x=x,y=y),colour=line_colour) +
 geom_path(data=centrecirclemin, aes(x=x,y=y),colour=line_colour)
 ```
+![Field](https://github.com/jaredwatkin/AFL-Pitch-Visualisation/blob/master/Plot5.png)
+
 50m arcs:
 ```
 field + 
@@ -157,6 +165,8 @@ geom_path(data=centrecirclemin, aes(x=x,y=y),colour=line_colour) +
 geom_path(data=fiftyarcleft,aes(x=x,y=y),colour=line_colour) +
 geom_path(data=fiftyarcright,aes(x=x,y=y),colour=line_colour)
 ```
+![Field](https://github.com/jaredwatkin/AFL-Pitch-Visualisation/blob/master/Plot6.png)
+
 Goal squares:
 ```
 field + 
@@ -172,6 +182,7 @@ geom_path(data=fiftyarcright,aes(x=x,y=y),colour=line_colour) +
 geom_rect(aes(xmin=xmin,xmax=LeftGoalSquareLength[2],ymin=LeftGoalSquareWidth[2],ymax=LeftGoalSquareWidth[1]),fill=grass_colour,colour=line_colour) +
 geom_rect(aes(xmin=RightGoalSquareLength[2],xmax=xmax,ymin=RightGoalSquareWidth[2],ymax=RightGoalSquareWidth[1]),fill=grass_colour,colour=line_colour)
 ```
+![Field](https://github.com/jaredwatkin/AFL-Pitch-Visualisation/blob/master/Plot7.png)
 
 # Putting it into a Function
 
