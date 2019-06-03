@@ -5,6 +5,7 @@ This post is going to step through visualising an AFL pitch in R using ggplot2. 
 First up I want to set a colour theme for the plot. I am taking inspiration from [FC RStats'](https://github.com/FCrSTATS) [soccer pitch visualisation](https://github.com/FCrSTATS/Visualisations/blob/master/3.CreateAPitch.md) and using the [Adobe Colour Tool](https://color.adobe.com/create) to create a basic green background with white field markings. 
 ```R
 library(ggplot2)
+library(ggforce)
 ```
 ```R
 grass_colour <- "#60BC48"
@@ -90,6 +91,9 @@ circleFun <- function(centre=c(0,0),diameter=1,npoints=100){
   return(data.frame(x = xx, y = yy))
 }
 
+# Create our boundary line
+oval <- list(ggforce::geom_ellipse(aes(x0=xmax/2,y0=ymax/2,a=xmax/2,b=ymax/2,angle=0),colour=line_colour))
+
 # Create the large, small centre circles
 centrecirclemax <- circleFun(c((xmax/2),(ymax/2)),centrecirclemax_d,npoints = 100)
 centrecirclemin <- circleFun(c((xmax/2),(ymax/2)),centrecirclemin_d,npoints = 100)
@@ -123,18 +127,16 @@ The boundary:
 field + 
 # add theme_blankPitch onto canvas
 theme_blankPitch() +
-### This will be an oval in time, but I am still figuring out how to plot that in ggplot
-geom_rect(aes(xmin=0, xmax=xmax, ymin=0, ymax=ymax),fill=grass_colour,colour=line_colour)
+oval
 ```
-![Field](https://github.com/jaredwatkin/AFL-Pitch-Visualisation/blob/master/Plot3.png)
+![Field](https://github.com/jaredwatkin/AFL-Pitch-Visualisation/blob/master/Plot8.png)
 
 The centre square:
 ```R
 field + 
 # add theme_blankPitch onto canvas
 theme_blankPitch() +
-### This will be an oval in time, but I am still figuring out how to plot that in ggplot
-geom_rect(aes(xmin=0, xmax=xmax, ymin=0, ymax=ymax),fill=grass_colour,colour=line_colour) +
+oval +
 geom_rect(aes(xmin=CentreSquareLength[2],xmax=CentreSquareLength[1],ymin=CentreSquareWidth[2],ymax=CentreSquareWidth[1]),fill=grass_colour,colour=line_colour)
 ```
 ![Field](https://github.com/jaredwatkin/AFL-Pitch-Visualisation/blob/master/Plot4.png)
@@ -144,8 +146,7 @@ The centre circles:
 field + 
 # add theme_blankPitch onto canvas
 theme_blankPitch() +
-### This will be an oval in time, but I am still figuring out how to plot that in ggplot
-geom_rect(aes(xmin=0, xmax=xmax, ymin=0, ymax=ymax),fill=grass_colour,colour=line_colour) +
+oval +
 geom_rect(aes(xmin=CentreSquareLength[2],xmax=CentreSquareLength[1],ymin=CentreSquareWidth[2],ymax=CentreSquareWidth[1]),fill=grass_colour,colour=line_colour) + 
 geom_path(data=centrecirclemax, aes(x=x,y=y),colour=line_colour) +
 geom_path(data=centrecirclemin, aes(x=x,y=y),colour=line_colour)
@@ -157,8 +158,7 @@ geom_path(data=centrecirclemin, aes(x=x,y=y),colour=line_colour)
 field + 
 # add theme_blankPitch onto canvas
 theme_blankPitch() +
-### This will be an oval in time, but I am still figuring out how to plot that in ggplot
-geom_rect(aes(xmin=0, xmax=xmax, ymin=0, ymax=ymax),fill=grass_colour,colour=line_colour) +
+oval +
 geom_rect(aes(xmin=CentreSquareLength[2],xmax=CentreSquareLength[1],ymin=CentreSquareWidth[2],ymax=CentreSquareWidth[1]),fill=grass_colour,colour=line_colour) + 
 geom_path(data=centrecirclemax, aes(x=x,y=y),colour=line_colour) +
 geom_path(data=centrecirclemin, aes(x=x,y=y),colour=line_colour) +
@@ -172,8 +172,7 @@ Goal squares:
 field + 
 # add theme_blankPitch onto canvas
 theme_blankPitch() +
-### This will be an oval in time, but I am still figuring out how to plot that in ggplot
-geom_rect(aes(xmin=0, xmax=xmax, ymin=0, ymax=ymax),fill=grass_colour,colour=line_colour) +
+oval +
 geom_rect(aes(xmin=CentreSquareLength[2],xmax=CentreSquareLength[1],ymin=CentreSquareWidth[2],ymax=CentreSquareWidth[1]),fill=grass_colour,colour=line_colour) + 
 geom_path(data=centrecirclemax, aes(x=x,y=y),colour=line_colour) +
 geom_path(data=centrecirclemin, aes(x=x,y=y),colour=line_colour) +
