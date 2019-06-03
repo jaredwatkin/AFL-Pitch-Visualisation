@@ -139,7 +139,7 @@ theme_blankPitch() +
 oval +
 geom_rect(aes(xmin=CentreSquareLength[2],xmax=CentreSquareLength[1],ymin=CentreSquareWidth[2],ymax=CentreSquareWidth[1]),fill=grass_colour,colour=line_colour)
 ```
-![Field](https://github.com/jaredwatkin/AFL-Pitch-Visualisation/blob/master/Plot4.png)
+![Field](https://github.com/jaredwatkin/AFL-Pitch-Visualisation/blob/master/StepByStepPlots/Plot9.png)
 
 The centre circles:
 ```R
@@ -151,7 +151,7 @@ geom_rect(aes(xmin=CentreSquareLength[2],xmax=CentreSquareLength[1],ymin=CentreS
 geom_path(data=centrecirclemax, aes(x=x,y=y),colour=line_colour) +
 geom_path(data=centrecirclemin, aes(x=x,y=y),colour=line_colour)
 ```
-![Field](https://github.com/jaredwatkin/AFL-Pitch-Visualisation/blob/master/Plot5.png)
+![Field](https://github.com/jaredwatkin/AFL-Pitch-Visualisation/blob/master/StepByStepPlots/Plot10.png)
 
 50m arcs:
 ```R
@@ -165,7 +165,7 @@ geom_path(data=centrecirclemin, aes(x=x,y=y),colour=line_colour) +
 geom_path(data=fiftyarcleft,aes(x=x,y=y),colour=line_colour) +
 geom_path(data=fiftyarcright,aes(x=x,y=y),colour=line_colour)
 ```
-![Field](https://github.com/jaredwatkin/AFL-Pitch-Visualisation/blob/master/Plot6.png)
+![Field](https://github.com/jaredwatkin/AFL-Pitch-Visualisation/blob/master/StepByStepPlots/Plot11.png)
 
 Goal squares:
 ```R
@@ -181,7 +181,7 @@ geom_path(data=fiftyarcright,aes(x=x,y=y),colour=line_colour) +
 geom_rect(aes(xmin=xmin,xmax=LeftGoalSquareLength[2],ymin=LeftGoalSquareWidth[2],ymax=LeftGoalSquareWidth[1]),fill=grass_colour,colour=line_colour) +
 geom_rect(aes(xmin=RightGoalSquareLength[2],xmax=xmax,ymin=RightGoalSquareWidth[2],ymax=RightGoalSquareWidth[1]),fill=grass_colour,colour=line_colour)
 ```
-![Field](https://github.com/jaredwatkin/AFL-Pitch-Visualisation/blob/master/Plot7.png)
+![Field](https://github.com/jaredwatkin/AFL-Pitch-Visualisation/blob/master/StepByStepPlots/Plot12.png)
 
 # Putting it into a Function
 
